@@ -22,13 +22,13 @@ class Fixed {
 		Fixed();
 
 		// Copy constructor
-		Fixed(Fixed const &src);
+		Fixed(const Fixed &src);
 
 		// Destructor
 		~Fixed();
 
 		// Assignment operator overload
-		Fixed &	operator=(Fixed const & rhs);
+		Fixed&	operator=(const Fixed &f);
 
 		// Returns the fixed point value
 		int		getRawBits() const;

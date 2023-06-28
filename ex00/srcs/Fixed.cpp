@@ -21,6 +21,8 @@ Fixed::Fixed() : _fixedPointValue(0) {
 
 /**
  * Copy constructor
+ *
+ * @param src
  */
 Fixed::Fixed(Fixed const &src) {
 	std::cout << "Copy constructor called" << std::endl;
@@ -34,10 +36,15 @@ Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
 }
 
-Fixed &Fixed::operator=(const Fixed &rhs) {
+/**
+ * Assignment operator overload
+ *
+ * @param f
+ * @return Fixed&
+ */
+Fixed&	Fixed::operator=(const Fixed &f) {
 	std::cout << "Copy assignment operator called" << std::endl;
-	if (this != &rhs)
-		this->_fixedPointValue = rhs.getRawBits();
+	this->_fixedPointValue = f.getRawBits();
 	return *this;
 }
 
@@ -46,7 +53,7 @@ Fixed &Fixed::operator=(const Fixed &rhs) {
  *
  * @return int _fixedPointValue
  */
-int Fixed::getRawBits() const {
+int	Fixed::getRawBits() const {
 	std::cout << "getRawBits member function called" << std::endl;
 	return this->_fixedPointValue;
 }
@@ -61,3 +68,4 @@ void Fixed::setRawBits(const int raw) {
 	std::cout << "setRawBits member function called" << std::endl;
 	this->_fixedPointValue = raw;
 }
+
