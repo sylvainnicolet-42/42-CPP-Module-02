@@ -17,11 +17,11 @@
 
 class Fixed {
 	public:
-		Fixed();
-		Fixed(const Fixed &src);
-		~Fixed();
+		Fixed();								// Constructor
+		Fixed(const Fixed &src);				// Copy constructor
+		~Fixed();								// Destructor
 
-		Fixed&	operator=(const Fixed &f);
+		Fixed&	operator=(const Fixed &rhs);	// Assignation operator
 
 		int		getRawBits() const;
 		void	setRawBits(int const raw);

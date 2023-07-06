@@ -42,9 +42,9 @@ Fixed::~Fixed() {
  * @param f
  * @return Fixed&
  */
-Fixed&	Fixed::operator=(const Fixed &f) {
+Fixed&	Fixed::operator=(const Fixed &rhs) {
 	std::cout << "Copy assignment operator called" << std::endl;
-	this->_fixedPointValue = f.getRawBits();
+	this->_fixedPointValue = rhs.getRawBits();
 	return *this;
 }
 
