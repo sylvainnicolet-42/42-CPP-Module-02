@@ -26,10 +26,32 @@ class Fixed {
 
 		Fixed&	operator=(const Fixed &rhs);	// Assignation operator
 
+		Fixed	operator+(const Fixed &rhs) const;
+		Fixed	operator-(const Fixed &rhs) const;
+		Fixed	operator*(const Fixed &rhs) const;
+		Fixed	operator/(const Fixed &rhs) const;
+
+		Fixed&	operator++(void);
+		Fixed	operator++(int);
+		Fixed&	operator--(void);
+		Fixed	operator--(int);
+
+		bool	operator>(const Fixed &rhs) const;
+		bool	operator<(const Fixed &rhs) const;
+		bool	operator>=(const Fixed &rhs) const;
+		bool	operator<=(const Fixed &rhs) const;
+		bool	operator==(const Fixed &rhs) const;
+		bool	operator!=(const Fixed &rhs) const;
+
 		int		getRawBits() const;
 		void	setRawBits(int const raw);
 		float 	toFloat(void) const;
 		int		toInt(void) const;
+
+		static Fixed&	min(Fixed &a, Fixed &b);
+		static Fixed&	min(const Fixed &a, const Fixed &b);
+		static Fixed&	max(Fixed &a, Fixed &b);
+		static Fixed&	max(const Fixed &a, const Fixed &b);
 	private:
 		int					_fixedPointValue;
 		static const int	_fractionalBits = 8;
