@@ -173,16 +173,16 @@ Fixed&	Fixed::min(Fixed &a, Fixed &b) {
 	return (a < b) ? a : b;
 }
 
-Fixed&	Fixed::min(const Fixed &a, const Fixed &b) {
-	return (a < b) ? const_cast<Fixed&>(a) : const_cast<Fixed&>(b);
+const Fixed&	Fixed::min(const Fixed &a, const Fixed &b) {
+	return (a < b) ? a : b;
 }
 
 Fixed&	Fixed::max(Fixed &a, Fixed &b) {
 	return (a > b) ? a : b;
 }
 
-Fixed&	Fixed::max(const Fixed &a, const Fixed &b) {
-	return (a > b) ? const_cast<Fixed&>(a) : const_cast<Fixed&>(b);
+const Fixed&	Fixed::max(const Fixed &a, const Fixed &b) {
+	return (a > b) ? a : b;
 }
 
 /**
