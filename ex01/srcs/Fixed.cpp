@@ -20,25 +20,33 @@ Fixed::Fixed() : _fixedPointValue(0) {
 }
 
 /**
- * Constructor with int value as parameter
- * Convert int value to fixed point value
+ * TODO
  *
  * @param value
  */
 Fixed::Fixed(const int value) {
 	std::cout << "Int constructor called" << std::endl;
-	this->_fixedPointValue = value << this->_fractionalBits;
+	this->_fixedPointValue = value << Fixed::_fractionalBits;
 }
 
 /**
- * Constructor with float value as parameter
- * Convert float value to fixed point value with rounding to nearest integer
+ * roundf() arrondit la valeur passée en paramètre à la valeur entière
+ * la plus proche.
+ *
+ * value * (1 << Fixed::_fractionalBits):
+ * Cela multiplie la valeur d'origine (value) par une puissance de deux,
+ * où l'exposant est donné par Fixed::_fractionalBits.
+ * Cela permet de décaler les bits fractionnels vers la partie entière.
+ * Par exemple, si _fractionalBits vaut 8, cela revient à multiplier
+ * value par 256 (2^8).
+ * L'objectif est de conserver une précision fractionnaire avec un
+ * nombre spécifié de bits.
  *
  * @param value
  */
 Fixed::Fixed(const float value) {
 	std::cout << "Float constructor called" << std::endl;
-	this->_fixedPointValue = roundf(value * (1 << this->_fractionalBits));
+	this->_fixedPointValue = (int)roundf(value * (1 << Fixed::_fractionalBits));
 }
 
 /**
@@ -90,21 +98,36 @@ void Fixed::setRawBits(const int raw) {
 }
 
 /**
- * Convert fixed point value to float
+ * TODO
  *
  * @return float
  */
 float Fixed::toFloat() const {
-	return (float)this->_fixedPointValue / (1 << this->_fractionalBits);
+	return (float)this->_fixedPointValue / (1 << Fixed::_fractionalBits);
 }
 
 /**
- * Convert fixed point value to int
+ * Opération de décalage de bits vers la droite (>>) sur la variable
+ * membre _fixedPointValue de l'objet Fixed.
+ *
+ * Le décalage de bits vers la droite de 8 positions (>> 8) divise la
+ * valeur _fixedPointValue par une puissance de 2, en supprimant les 8 bits
+ * de poids faible (partie fractionnaire) et en gardant les 24 bits de
+ * poids fort (partie entière).
+ * Cela revient à convertir la valeur fixe en un entier en ignorant la
+ * partie fractionnaire.
+ *
+ * Le résultat de cette opération est ensuite renvoyé comme résultat de
+ * la méthode toInt().
+ *
+ * En résumé, la méthode toInt() retourne la valeur fixe de l'objet Fixed
+ * convertie en un entier en ignorant les 8 bits
+ * de poids faible (partie fractionnaire).
  *
  * @return int
  */
 int Fixed::toInt() const {
-	return this->_fixedPointValue >> this->_fractionalBits;
+	return this->_fixedPointValue >> Fixed::_fractionalBits;
 }
 
 /**
