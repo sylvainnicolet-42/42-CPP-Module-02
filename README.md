@@ -9,6 +9,19 @@ D'autre part, les nombres à virgule flottante (float) sont utilisés pour repr�
 
 En résumé, les valeurs fixes offrent une précision fixe après la virgule, tandis que les nombres à virgule flottante offrent une précision relative et une plage de valeurs plus étendue. Le choix entre les deux dépend des besoins spécifiques de l'application. Si une précision absolue est requise, les valeurs fixes peuvent être préférables. Si une plus grande plage de valeurs et une précision relative sont plus importantes, les nombres à virgule flottante peuvent être utilisés.
 
+## Point fixe
+
+Supposons que nous utilisions une représentation en point fixe de 8 bits avec 4 bits pour la partie entière et 4 bits pour la partie fractionnaire. Dans ce cas, le nombre 3,75 serait représenté comme suit :
+
+Partie entière (3) : 0011
+Partie fractionnaire (0,75) : 1100
+
+En combinant ces deux parties, la représentation en point fixe de 3,75 serait : 0011.1100.
+
+La position de la virgule dans la représentation dépend de la convention choisie. Dans cet exemple, nous avons convenu que les 4 premiers bits sont réservés pour la partie entière, suivis de la virgule, puis des 4 bits restants pour la partie fractionnaire.
+
+Il est important de noter que la précision de la représentation en point fixe dépend du nombre de bits alloués pour la partie fractionnaire. Dans cet exemple, avec 4 bits pour la partie fractionnaire, la précision serait de 1/16 (ou 0,0625), ce qui signifie que nous pouvons représenter des nombres avec une précision de 0,0625.
+
 ## Différence entre ++i et i++
 
 Les opérateurs `++i` et `i++` sont tous deux des opérateurs d'incrémentation qui augmentent la valeur d'une variable de 1. La différence entre les deux est que `++i` est un opérateur préfixé et `i++` est un opérateur suffixé.
