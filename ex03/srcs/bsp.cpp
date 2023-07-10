@@ -12,6 +12,7 @@
 
 #include "Point.class.hpp"
 
+// Example: https://www.geeksforgeeks.org/check-whether-a-given-point-lies-inside-a-triangle-or-not/
 bool	bsp(Point const &a, Point const &b, Point const &c, Point const &point) {
 
 	// Calculate the area of the triangle ABC
@@ -34,5 +35,9 @@ bool	bsp(Point const &a, Point const &b, Point const &c, Point const &point) {
 
 Fixed calculateArea(Point const &a, Point const &b, Point const &c)
 {
-	return abs((a.getX().toFloat()*(b.getY().toFloat()-c.getY().toFloat()) + b.getX().toFloat()*(c.getY().toFloat()-a.getY().toFloat())+ c.getX().toFloat()*(a.getY().toFloat()-b.getY().toFloat()))/2.0f);
+	// Calculate the area of the triangle ABC using the Heron's formula
+	Fixed area = (a.getX().toFloat()*(b.getY().toFloat()-c.getY().toFloat()) + b.getX().toFloat()*(c.getY().toFloat()-a.getY().toFloat())+ c.getX().toFloat()*(a.getY().toFloat()-b.getY().toFloat()))/2.0f;
+	if (area < 0)
+		area = Fixed(-1) * area;
+	return (area);
 }

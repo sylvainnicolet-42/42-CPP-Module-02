@@ -13,9 +13,9 @@
 #include "Point.class.hpp"
 
 int	main( void ) {
-	Point	a(0, 0);
-	Point	b(20, 0);
-	Point	c(0, 20);
+	Point	a(-3, 3);
+	Point	b(2, 0);
+	Point	c(-3, -3);
 	Point	p(0, 0);
 
 	std::cout << "--- TRIANGLE ---" << std::endl;

@@ -27,7 +27,7 @@ Fixed::Fixed() : _fixedPointValue(0) {
  */
 Fixed::Fixed(const int value) {
 //	std::cout << "Int constructor called" << std::endl;
-	this->_fixedPointValue = value << this->_fractionalBits;
+	this->_fixedPointValue = value << Fixed::_fractionalBits;
 }
 
 /**
@@ -38,7 +38,7 @@ Fixed::Fixed(const int value) {
  */
 Fixed::Fixed(const float value) {
 //	std::cout << "Float constructor called" << std::endl;
-	this->_fixedPointValue = roundf(value * (1 << this->_fractionalBits));
+	this->_fixedPointValue = roundf(value * (1 << Fixed::_fractionalBits));
 }
 
 /**
@@ -157,7 +157,7 @@ void Fixed::setRawBits(const int raw) {
  * @return float
  */
 float Fixed::toFloat() const {
-	return (float)this->_fixedPointValue / (1 << this->_fractionalBits);
+	return (float)this->_fixedPointValue / (1 << Fixed::_fractionalBits);
 }
 
 /**
@@ -166,7 +166,7 @@ float Fixed::toFloat() const {
  * @return int
  */
 int Fixed::toInt() const {
-	return this->_fixedPointValue >> this->_fractionalBits;
+	return this->_fixedPointValue >> Fixed::_fractionalBits;
 }
 
 Fixed&	Fixed::min(Fixed &a, Fixed &b) {
